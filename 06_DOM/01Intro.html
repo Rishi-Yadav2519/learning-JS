@@ -4,14 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Introduction to DOM</title>
+    <style>
+        .bg-black{
+            background-color: black;
+            color: white;
+        }
+    </style>
 </head>
-<body>
-    <div class="bg-black">
-        <h1 class="heading">DOM Intoduction</h1>
+<body class="bg-black">
+    <div >
+        <h1 id="title" class="heading">DOM Intoduction</h1>
         <p>
             Lorem ipsum dolor sit amet.
         </p>
-        <img src="./Untitled-2025-12-27-2027.png" alt="Flow Chart">
+        <img src="./Untitled-2025-12-27-2027.png" alt="Flow Chart" width="300px">
+        <ul>
+            <li class="list-item">One</li>
+            <li class="list-item">Two</li>
+            <li class="list-item">Three</li>
+        </ul>
     </div>
+
+<!-- 
+We can select a element by document.getElementById("") method with parameter id name as string. After selecting the desired element we can apply further more things to it such as: -
+document.getElementById("title").id     We can get the id of selected element
+document.getElementById("title").className     We can get the class of selected element
+document.getElementById("title").getAttribute("--")     We can get value of a specific attribute
+document.getElementById("title").setAttribute("--, --")     We can set value of a specific attribute first we give it the attribute name then give it attribute value after comma. It always overwrite the existing attribute if we want to add multiple values such as multiple class. We have to give all values again which we want.
+const title = document.getElementById("title")     We can store the element in a variable
+title.style.backgroundColor = "blue"     We can give css to our element. This is inline CSS. We can add any style using this
+title.textContent     We can get the text inside our element even the hidden text
+title.innerText     We can get the text inside our element but only the visible text on page
+title.innerHTML     We can get the text inside our element including the HTML also written inside our element
+title.innerText = ""     We can change text inside our element
+title.innerHTML = ""    We can change the text inside our element and even create it inside other element through this
+document.querySelector("h1")    Select the first element with the given query. We can give query as we use in CSS such as if tag then direct its name, for class use . and for id use #. We can use any CSS selector here
+We can store any element in variable then further select inside it using the selectors on variables as well.
+
+Above we have learnt about the selectors which select only one element
+
+const tempList = document.querySelectorAll('li')     Selects all the items with given query but returns a NodeList which is same as array in some properties. We can store it in a variable as well
+tempList[0].style.color = "red"     We can target each element of NodeList by array index
+tempList.forEach( (item) => item.style.color = "gray")      We can use forEach loop method on nodeList as it is some sort of array
+
+let tempClass = document.getElementByClassName("list-item")     Selects all the items with class attributes value as we have given. We can store it in a variable as well. It is a HTML collection which is a sort of array but we can't use any array method on it not even forEach method directly
+
+Array.from("")      It is the method used to create array from HTML collection or nodeList and then use all array methods on them
+-->
 </body>
 </html>
