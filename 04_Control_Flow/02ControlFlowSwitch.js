@@ -50,4 +50,6 @@ switch (month) {
         console.log("Default if nothing matched");
         break;
 }
-// Switch is basically another type of if else condition where we give the value in place of key and check it with the value from case and then do the work in between case and break, default is the case where nothing matched. Break is the point where if anything match then the switch case stopeed there and returned the value.
+// Switch is basically another type of if else condition where we give the value in place of key and check it with the value from case and then do the work in between case and break, default is the case where nothing matched. Break is the point where if anything match then the switch case stoped there and returned the value.
+
+// We can give the value after case in string as well which to compare it with strings.
