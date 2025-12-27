@@ -96,4 +96,6 @@ const objInArr = [
 objInArr.forEach( (obj) => {
     console.log(obj.name);
 } )
-// we can simply access the each object one by one using the loop in array by forEach then call the value by it's key and our wrk is done.
+// we can simply access the each object one by one using the loop in array by forEach then call the value by it's key and our work is done.
+
+// forEach take callback as argument and callback is basically a function which we can use in single line as well as in multiple lines but if we open the scope {} of function we have to add return keyword for returning values and if we don't open the scope {} and do our work in single line than return keyword is not needed.
