@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI Calculator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #212121;
+        color: #fff;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .hero {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+      }
+      h1 {
+        text-align: center;
+        margin: 10px 0;
+      }
+      .height {
+        display: flex;
+        width: 350px;
+        justify-content: space-between;
+        margin: 10px 0;
+      }
+      .weight {
+        display: flex;
+        width: 350px;
+        justify-content: space-between;
+        margin: 10px 0;
+      }
+      button {
+        width: 150px;
+        border-radius: 10px;
+        border: none;
+        color: #fff;
+        background: black;
+        font-size: 20px;
+        padding: 5px;
+        align-self: center;
+        margin-top: 20px;
+      }
+      .dataContainer {
+        margin-top: 40px;
+      }
+      #blnk{
+        height: 50px;
+        width: 350px;
+        display: flex;
+        padding: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero">
+      <h1>BMI Calculator</h1>
+      <div class="height">
+        <label for="height">Enter your height in CM:</label>
+        <input type="number" id="height" value="" placeholder="160" />
+      </div>
+      <div class="weight">
+        <label for="weight">Enter your weight in Kg:</label>
+        <input type="number" id="weight" value="" placeholder="50" />
+      </div>
+      <div id="blnk"></div>
+      <button onclick="calculateBMI()">Calculate</button>
+
+      <div class="dataContainer">
+        <h2>BMI Guide</h2>
+        <ol>
+          <li>Underweight : below 18.5</li>
+          <li>Healthy Weight : 18.5 – 24.9</li>
+          <li>Overweight : 25.0 – 29.9</li>
+          <li>Obesity : 30.0 or greater</li>
+        </ol>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    // Metric: BMI = weight (kg) / [height (m)]²
+    function calculateBMI() {
+      const height = document.getElementById("height");
+      let heightValue = height.value;
+      heightValue = heightValue / 100
+      const weight = document.getElementById("weight");
+      const weightValue = weight.value;
+
+      const printSpace = document.getElementById("blnk")
+
+    let BMI = weightValue / (heightValue * heightValue)
+    BMI = BMI.toFixed(1)
+
+      if (heightValue <= 0 || weightValue <= 0) {
+        printSpace.innerHTML = "<p>Invalid input</p>";
+      } else{
+        printSpace.innerHTML = `<p>Your height is ${heightValue * 100}cm and body weight is ${weightValue}kg. Your BMI is ${BMI}</p>`;
+      }
+
+      height.value = "";
+      weight.value = "";
+      height.focus()
+    }
+  </script>
+</html>
