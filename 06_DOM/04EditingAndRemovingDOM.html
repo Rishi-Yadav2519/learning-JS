@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+</head>
+<body style="background-color: #212121; color: white;">
+    <ul class="languages">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    // We can make a function to do repetitive work as we know so we can add new li element with new language names as well using function
+    function addLang (name){
+        const li = document.createElement('li')
+        li.innerHTML = `${name}`
+        const container = document.querySelector(".languages")
+        container.appendChild(li)
+    }
+    addLang("Java")
+    addLang("Python")
+    // It is a way to add new element using function in our element but here we added the text as innerHTML which is OK but not optimised way.
+
+    function addOptiLang(name) {
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(name))
+        const container = document.querySelector(".languages")
+        container.appendChild(li)
+        // document.querySelector(".languages").appendChild(li)
+    }
+    addOptiLang("C++")
+    // It is the optimised way of adding element in our DOM tree as in this format the function will not have to run through the complete DOM tree 2 times as in upper function 1 time for adding element and second time overwriting the innerHTML.
+
+    // Editing in DOM
+    const secondLang = document.querySelector("li:nth-child(2)")
+    // secondLang.innerHTML = "Flutter"    // Not optimised way as we discussed
+    const newLi = document.createElement("li")
+    newLi.appendChild(document.createTextNode('Flutter'))
+    secondLang.replaceWith(newLi)       // It is more optimised way
+
+    // Editing outer HTML
+    const lastLang = document.querySelector("li:last-child")
+    lastLang.outerHTML = "<li>C</li>"   // We can also change the whole element using outer html but it is much complicated as we have write the whole element in it
+
+    // Removeing element
+    const thirdLang = document.querySelector('li:nth-child(3)')
+    thirdLang.remove()
+</script>
+</html>
