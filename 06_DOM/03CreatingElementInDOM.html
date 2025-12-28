@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating Element using DOM</title>
+</head>
+<body style="background-color: black; color: white;">
+    
+</body>
+<script>
+    let div = document.createElement('div')
+    console.log(div);   // We can create a element and hold it in a variable but it didn't appear on webpage unless we send it
+    div.className = "main"  // We can add class to our created element
+    div.id = "main_div"     // We can give id to our created element
+    div.setAttribute("title", "my-div")     // We can set further more attribute which are not pre-defined by setAttribute using key value pair.
+    div.style.backgroundColor = "red"     // We can give any styling to our element
+    div.innerText = "Hello everyone"    // It overwrites the existing text in our element
+    let sampleText = document.createTextNode(" Hello everyone!")     // Create a text node and store it in variable. It didn't overwrite the existing text but add the text node as a new text node.
+    div.appendChild(sampleText)     // We can add the text to our element or any other element.
+    document.body.appendChild(div)      // Appending div as child in body
+</script>
+</html>
