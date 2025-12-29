@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async JS</title>
+</head>
+<body>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+
+    // setInterval(() => {
+    //     console.log("Rishi", Date.now());
+    // }, 1000);
+
+    // setInterval is similar to setTimeout but where the setTimeout was running only once after a specific time and stopped at last the setInterval repeats after the specific time infinite times unless we clear the interval.
+
+    function nameDate(para){
+        console.log(para + ' Rishi', Date.now())
+    }
+    // const firstInterval = setInterval(nameDate, 1000, "Hi"); 
+    // We can also give a third parameter in setInterval which we can use in function as a parameter if we want.
+
+    let interval;
+
+    function startInterval () {
+        if (!interval) { 
+            interval = setInterval(nameDate, 1000, "Hi")
+        }
+    }
+    function stopInterval() {
+            clearInterval(interval);
+            interval = null
+    }
+    document.getElementById('start').addEventListener('click', startInterval)
+    document.getElementById('stop').addEventListener('click', stopInterval)
+
+    // We have declared a undefined variable which is going to store our interval so that we can target it for clearing the interval.
+
+</script>
+</html>
