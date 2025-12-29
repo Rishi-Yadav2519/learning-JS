@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Events</title>
+  </head>
+  <body style="background-color: #212121; color: aliceblue">
+    <h2>Amazing image</h2>
+    <div>
+      <ul id="images">
+        <li>
+          <img
+            width="200px"
+            id="photoshop"
+            src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt="photoshop"
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="japan"
+            src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="river"
+            src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="owl"
+            src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            width="200px"
+            id="prayer"
+            src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+            alt=""
+          />
+        </li>
+        <li>
+          <a style="color: aliceblue" href="https://google.com" id="google"
+            >Google</a
+          >
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    /*
+
+    // Browser events are asynchronous beacuse they wait for that specific event to happen.
+    // Direct application of events on any elements using inline JavaScript is not recommended in JavaScript. We can target the element using DOM and then apply the event in JavaScript file which  is a good approach.
+
+
+    document.getElementById("owl").onclick = function () {
+        // This way is good but gives us less features
+    }
+
+
+    document.getElementById('owl').addEventListener('click', function(e){
+        // This is the best way to apply anything on event
+        console.log(e);
+        // An Event Listner returns us an event object which hold many values we can check it in log
+    }, false //False is the default value of any event listner we don't have to write it manually but sometime we have to assign it
+    )
+    // What to study: - type, timeStamp, defaultPrevented, target, toElement, sourceElement, currentTarget, clientX, clientY, screenX, screenY, altKey, ctrlKey, shiftKey, keyCode
+
+    // Event Propagation has two context:- event bubling and event capturing, false stands for event bubbling which is default, true stands for event capturing
+
+    // What is event propagation
+    document.getElementById('images').addEventListener('click', function(e){
+        console.log("Clicked inside ul");
+    }, false)
+    document.getElementById('owl').addEventListener('click', function(e){
+        console.log("Clicked on owl");
+        e.stopPropagation()
+    }, false)
+
+    // Here is we click on owl it is going to be click inside ul as well and the ul click happen first as image in inside the ul but we can get the owl click value first as in event bubbling the event happens lower to upper means the child first then parent.
+    // If we activate the event capturing mode by changing the false or default value to true we can get the opposite as it capture the event according to first to last basis.
+    // We know that we can get event methods from event listner and we captuerd that in e so we can stop the propagation using stopPropagation() method. It stop the bubbling of event.
+
+
+    document.getElementById('google').addEventListener('click', function(e) {
+        e.preventDefault()
+    })
+    // We can prevent the default behaviour of any element by using the preventDefault() method of eventListner like here we stopped the re-directing of anchor tag by preventing the default behaviour.
+
+    */
+    // Trying to build a function which removes the images as we click on it.
+    document.querySelector('#images').addEventListener('click', function(e){
+        /*
+
+        // Tracking if the event listner is working or not
+        console.log(e);
+        // Tracking the target clicked
+        console.log(e.target);
+        // As we have target now but we have to remove the complete li elemnent so we have to target the li using parentNode
+        console.log(e.target.parentNode);
+        // Now that we have our li to remove we can remove it by 2 ways
+        let target = e.target.parentNode
+        target.remove() // We can directly remove the targeted element
+        // target.parentNode.removeChild(target) // We can select the parent of li then give command to remove the child which we have selected as target
+
+        // As the above method is working with the assumption to click only on image but we are targeting the parent of any clicked element what if we click on li insted of image the ul got targeted and removed. So we have to give it some checks using if else statement
+
+        */
+
+        if(e.target.tagName === 'IMG'){
+        console.log(e.target.tagName); // We can get the tagName through event listner as well so we are checking if the clicked element is tag or not if it is image then remove it else do nothing 
+        let target = e.target.parentNode
+        target.remove()
+        }
+    })
+  </script>
+</html>
