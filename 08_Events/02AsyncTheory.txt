@@ -1,0 +1,17 @@
+JavaScript is syncronous language which means it runs line by line in program and wait for the first program to finish before proceeding to next program.
+It is a single threaded language means all the work done on a single thread which make it sometime slower in comparision to other languages.
+
+// It is default JavaScript behaviour
+
+Execution context: -
+Execute one line of code at a time -- call stack, memory heap
+Each exectution waits for the last one to complete
+
+Blocking code Vs. Non Blocking code
+Blocking code - Blocks the flow of program stop the program to move to next line until complete
+Non Blocking code - Does not block the flow of program means wait for it's completion but outside the thread and program move to next line without waiting for it's completion.
+
+Web API or any other API such as Node API is used to make JavaScript asynchronous which do multiple works at the same time or wait for any function to execute in background while running the main function normally. 
+
+There are some exemptions as well such as timeOut, interval and async functions etc.
+Actually the program which wait at the background are using the API provided by another enviornment such as browser, node etc. because by ddefault JavaScript doesn't support asynchronous programming.
