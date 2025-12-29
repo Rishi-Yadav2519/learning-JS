@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML HTTP Request</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <!-- These are the responses when we call a XML HTTP REQUEST for fethching API's. Genereally we work after the respone 4 received -->
+    <p>0	UNSENT	Client has been created. open() not called yet.
+    1	OPENED	open() has been called.
+    2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+    3	LOADING	Downloading; responseText holds partial data.
+    4	DONE	The operation is complete.    
+    </p>
+    <button id="dataBtn">Click to get Data</button>
+</body>
+<script>
+
+const requestURL = "https://api.github.com/users/hiteshchoudhary"
+const xmlRequest = new XMLHttpRequest();
+
+// We have to open our request to make ot work then it will take 2 values first is method and second the URL of API
+xmlRequest.open("GET", requestURL)
+// onreadystatechange is a method which monitors the changing of states of our request
+xmlRequest.onreadystatechange = function () {
+    console.log(xmlRequest.readyState);
+    if(xmlRequest.readyState === 4){
+        // The condition checks if our state reached the 4th state means done. If it is done then we give it work to do
+        const data = JSON.parse(this.responseText)
+        // The data we recieved is generally in string format so we have to convert it first using JSON.parse to use it as an object and now we have the complete data stored in data named variable.   
+
+        let img = document.createElement('img')
+        img.src = data.avatar_url
+        img.setAttribute('width', "100%")
+        
+        let followers = document.createElement('h3')
+        followers.innerHTML = `Followers Count: ${data.followers}`
+     
+        let div = document.createElement("div")
+        div.style.height = "400px"
+        div.style.width = "200px"
+        div.appendChild(img)
+        div.appendChild(followers)
+
+        function addData(){
+            document.body.appendChild(div)
+        }
+
+        const btn = document.querySelector('#dataBtn')
+        btn.addEventListener('click', addData)
+    }
+}
+// We have to send our request then it pass from each state
+xmlRequest.send()
+
+</script>
+</html>
