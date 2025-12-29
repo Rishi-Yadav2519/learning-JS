@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async JS</title>
+</head>
+<body>
+    <h1>Learning JS</h1>
+    <button id="cancel">Cancel</button>
+    <script>
+        // If we go in console and there we get the window object we can get that the setInterval and setTimeout are browser API's method means it is not the core JavaScript
+        // setTimeout() needs 2 things one is handler which is also a function with other name and a timeout in number
+        setTimeout( () => {
+           console.log("Rishi");
+        }, 2000);
+        
+        // It is used for doing a specific task after a certain time only once. If we use setInterval() that task will be repetative after a specific time each time.
+
+        const sayName = () => {
+            console.log("Rishi");
+            document.querySelector('h1').innerHTML = "Learning JS from Chai aur Code"
+        }
+        const firstTimeout = setTimeout(sayName, 2000);
+        // We can also give the refrence of function written outside the method. We can make the function normally as we are doing in any function and give it multiple task to perform.
+
+        // We can hold the setTimeout function/method in a variable as we can do with other functions
+
+        clearTimeout(firstTimeout)
+        // We can remove a timeout by giving it's refrence to clearTimeout but we generally don't want to remove the Timeout like this beacuse it is similar to not attaching the timeout as it clear it without any interaction. We generally want to clear the timeout if anything wrong happened in code or using user interaction such as clicking a button.
+
+        const secondTimeout = setTimeout(sayName, 2000);
+
+        document.querySelector('#cancel').addEventListener('click', function() {
+            clearTimeout(secondTimeout);
+            console.log("Timeout stopped using button click");
+        })
+        // Here we are stopping the timeOut when someone clicking on the button
+    </script>
+</body>
+</html>
